@@ -8,6 +8,8 @@ It includes:
 * **Frontend UI**: Test and visualise guardrail behaviour
 * **Docker Compose setup**: Build and run the system across platforms
 
+<img width="1386" height="828" alt="image" src="https://github.com/user-attachments/assets/34b7fe29-e322-4cec-b209-cdd0ed4e18f3" />
+
 ---
 
 ## Features
