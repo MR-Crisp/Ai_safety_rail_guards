@@ -1,72 +1,42 @@
-html, body, #root {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: #59cbe8; 
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  min-width: 50%;
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
   text-align: center;
-  background-color: #59cbe8;
-  color: #1c2b39; 
-  font-family: sans-serif;
 }
 
-footer {
-  margin-top: auto;
-  background-color: #59cbe8;
-  color: #1c2b39;
-  padding: 10px;
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-form {
-  flex-grow: 0.5;
-  align-self: center;
-  height: 70%;
-  width: 70%;
-  background-color: #59cbe8;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-textarea {
-  align-self: center;
-  height: 30%;
-  width: 50%;
-  background-color: #70d4f0;
-  color: #1c2b39;
-  border: 1px solid #1c2b39;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 15px;
-  resize: none;
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
 }
 
-button {
-  align-self: center;
-  width: fit-content;
-  padding: 10px 20px;
-  background-color: #70d4f0;
-  color: #1c2b39;
-  border: 1px solid #1c2b39;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
+.card {
+  padding: 2em;
 }
 
-button:hover {
-  background-color: #ff8200;
-  color: #1c2b39;
-  border-color: #ff8200;
-}
-.input-section {
-  margin: 20px auto;
-  width: 70%;
+.read-the-docs {
+  color: #888;
 }
