@@ -2,17 +2,78 @@ import React, { useState } from "react";
 import "./App.css";
 
 export default function App() {
-  const [context, setContext] = useState("");     // context input
-  const [prompt, setPrompt] = useState("");       // prompt input
+  // Step inputs
+  const [context, setContext] = useState("");
+  const [prompt, setPrompt] = useState("");
+  const [llm, setLLM] = useState("");
+
+  // Submitted values
+  const [submittedContext, setSubmittedContext] = useState(null);
+  const [submittedPrompt, setSubmittedPrompt] = useState(null);
+  const [submittedLLM, setSubmittedLLM] = useState(null);
+
+  // Result + status
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Only trigger when "Get Result" button is clicked
+  // --- Submit / Reset handlers ---
+
+  const handleSubmitContext = () => {
+    if (!context) return setError("Context cannot be empty");
+    setSubmittedContext(context);
+    setContext("");
+    setError(null);
+    setResult(null);
+  };
+
+  const handleResetContext = () => {
+    setSubmittedContext(null);
+    setContext("");
+    setSubmittedPrompt(null);
+    setPrompt("");
+    setSubmittedLLM(null);
+    setLLM("");
+    setResult(null);
+    setError(null);
+  };
+
+  const handleSubmitPrompt = () => {
+    if (!prompt) return setError("Prompt cannot be empty");
+    setSubmittedPrompt(prompt);
+    setPrompt("");
+    setError(null);
+    setResult(null);
+  };
+
+  const handleResetPrompt = () => {
+    setSubmittedPrompt(null);
+    setPrompt("");
+    setSubmittedLLM(null);
+    setLLM("");
+    setResult(null);
+    setError(null);
+  };
+
+  const handleSubmitLLM = () => {
+    if (!llm) return setError("LLM cannot be empty");
+    setSubmittedLLM(llm);
+    setLLM("");
+    setError(null);
+    setResult(null);
+  };
+
+  const handleResetLLM = () => {
+    setSubmittedLLM(null);
+    setLLM("");
+    setResult(null);
+    setError(null);
+  };
+
+  // --- Fetch similarity result ---
   const handleGetResult = async () => {
-    if (!context || !prompt) {
-      setError("Both context and prompt are required");
-      return;
+    if (!submittedContext || !submittedPrompt || !submittedLLM) {
+      return setError("Context, prompt, and LLM must all be submitted first");
     }
 
     setLoading(true);
@@ -24,9 +85,10 @@ export default function App() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          context_text: context,
-          user_text: prompt,
+          context_text: submittedContext,
+          user_text: submittedPrompt,
           threshold: 0.4,
+          llm: submittedLLM, // optional extra field for backend
         }),
       });
 
@@ -48,31 +110,88 @@ export default function App() {
     <div className="App">
       <h1>Context Similarity Detector</h1>
 
-      {/* Context Form */}
+      {/* --- Step 1: Context --- */}
       <div className="input-section">
         <h3>Step 1: Enter Context</h3>
         <textarea
-          placeholder="Enter context text here..."
+          placeholder="Enter context..."
           value={context}
           onChange={(e) => setContext(e.target.value)}
-          rows={6}
+          rows={4}
         />
+        <div style={{ marginTop: 10 }}>
+          <button onClick={handleSubmitContext}>Submit Context</button>
+          <button onClick={handleResetContext} style={{ marginLeft: 10 }}>
+            Reset Context
+          </button>
+        </div>
+        {submittedContext && <p><b>Submitted Context:</b> {submittedContext}</p>}
       </div>
 
-      {/* Prompt Form */}
+      {/* --- Step 2: Prompt --- */}
       <div className="input-section">
         <h3>Step 2: Enter Prompt</h3>
         <textarea
-          placeholder="Enter your prompt here..."
+          placeholder="Enter prompt..."
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          rows={4}
+          rows={3}
+          disabled={!submittedContext}
         />
+        <div style={{ marginTop: 10 }}>
+          <button
+            onClick={handleSubmitPrompt}
+            disabled={!submittedContext}
+          >
+            Submit Prompt
+          </button>
+          <button
+            onClick={handleResetPrompt}
+            style={{ marginLeft: 10 }}
+            disabled={!submittedPrompt && !submittedLLM}
+          >
+            Reset Prompt
+          </button>
+        </div>
+        {submittedPrompt && <p><b>Submitted Prompt:</b> {submittedPrompt}</p>}
       </div>
 
-      {/* Get Result Button */}
+      {/* --- Step 3: LLM --- */}
       <div className="input-section">
-        <button onClick={handleGetResult} disabled={loading}>
+        <h3>Step 3: Enter Website Chatbot Answer</h3> 
+        <textarea
+          placeholder="Enter Answer..."
+          value={llm}
+          onChange={(e) => setLLM(e.target.value)}
+          rows={3}
+          disabled={!submittedContext}
+        />
+        <div style={{ marginTop: 10 }}>
+          <button
+            onClick={handleSubmitLLM}
+            disabled={!submittedPrompt}
+          >
+            Submit 
+          </button>
+          <button
+            onClick={handleResetLLM}
+            style={{ marginLeft: 10 }}
+            disabled={!submittedLLM}
+          >
+            Reset 
+          </button>
+        </div>
+        {submittedLLM && <p><b>Submitted LLM:</b> {submittedLLM}</p>}
+      </div>
+
+      {/* --- Step 4: Get Result --- */}
+      <div className="input-section">
+        <button
+          onClick={handleGetResult}
+          disabled={
+            !submittedContext || !submittedPrompt || !submittedLLM || loading
+          }
+        >
           {loading ? "Processing..." : "Get Result"}
         </button>
       </div>
