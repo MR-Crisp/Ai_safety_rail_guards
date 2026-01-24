@@ -32,7 +32,32 @@ cd Ai_safety_rail_guards
 
 ---
 
-### 2. Install Docker and Docker Compose
+### 2. Python Virtual Environment (Optional)
+
+If you prefer running the backend locally without Docker:
+
+```bash
+# Navigate to backend folder
+cd backend
+
+# Create a virtual environment
+python -m venv venv
+
+# Activate the virtual environment
+# macOS / Linux
+source venv/bin/activate
+# Windows
+venv\Scripts\activate
+
+# Install Python dependencies
+pip install -r requirements.txt
+```
+
+> This ensures all Python dependencies are isolated and avoids conflicts with global packages.
+
+---
+
+### 3. Install Docker and Docker Compose
 
 #### macOS
 
@@ -95,7 +120,7 @@ newgrp docker
 
 ---
 
-### 3. Verify Docker & Compose
+### 4. Verify Docker & Compose
 
 ```bash
 docker --version
@@ -104,7 +129,9 @@ docker compose version
 
 ---
 
-## Running the Project with Docker Compose
+## Running the Project
+
+### Option 1: Using Docker Compose
 
 * **Start all services**
 
@@ -136,6 +163,28 @@ Once running, access:
 * **Backend API**: `http://localhost:8000`
 
 *(Adjust ports if changed in `docker-compose.yml`.)*
+
+---
+
+### Option 2: Local Python Backend (without Docker)
+
+```bash
+# Navigate to backend folder
+cd backend
+
+# Activate virtual environment
+source venv/bin/activate  # macOS/Linux
+venv\Scripts\activate     # Windows
+
+# Run backend
+uvicorn main:app --reload
+```
+
+Then access:
+
+* **Backend API**: `http://localhost:8000`
+
+> You can still use the frontend via Docker or run it locally if desired.
 
 ---
 
@@ -193,4 +242,3 @@ docker compose down
 ```bash
 docker compose logs -f
 ```
-
