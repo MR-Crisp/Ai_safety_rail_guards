@@ -1,0 +1,68 @@
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #59cbe8; 
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 50%;
+  text-align: center;
+  background-color: #59cbe8;
+  color: #1c2b39; 
+  font-family: sans-serif;
+}
+
+footer {
+  margin-top: auto;
+  background-color: #59cbe8;
+  color: #1c2b39;
+  padding: 10px;
+}
+
+form {
+  flex-grow: 0.5;
+  align-self: center;
+  height: 70%;
+  width: 70%;
+  background-color: #59cbe8;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+textarea {
+  align-self: center;
+  height: 30%;
+  width: 50%;
+  background-color: #70d4f0;
+  color: #1c2b39;
+  border: 1px solid #1c2b39;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  resize: none;
+}
+
+button {
+  align-self: center;
+  width: fit-content;
+  padding: 10px 20px;
+  background-color: #70d4f0;
+  color: #1c2b39;
+  border: 1px solid #1c2b39;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ff8200;
+  color: #1c2b39;
+  border-color: #ff8200;
+}
