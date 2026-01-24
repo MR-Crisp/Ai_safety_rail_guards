@@ -1,6 +1,6 @@
-# 🛡️ AI Safety Rail Guards
+# AI Safety Rail Guards
 
-This project implements **AI safety guardrails** — systems that monitor, validate, and constrain AI behaviour. It intercepts prompts and model outputs, flagging or blocking unsafe or policy-violating content before reaching the user.
+This project implements AI safety guardrails — systems that monitor, validate, and constrain AI behaviour. It intercepts prompts and model outputs, flagging or blocking unsafe or policy-violating content before reaching the user.
 
 It includes:
 
@@ -10,18 +10,18 @@ It includes:
 
 ---
 
-## 🚀 Features
+## Features
 
-* 🚨 Monitor prompts and AI outputs
-* 🧠 Apply guardrail logic to catch unsafe responses
-* 🖥️ Frontend interface for testing
-* 🐳 Cross-platform Docker Compose setup
+* Monitor prompts and AI outputs
+* Apply guardrail logic to catch unsafe responses
+* Frontend interface for testing
+* Cross-platform Docker Compose setup
 
 ---
 
-## 💻 Installation
+## Installation
 
-### **1. Clone the Repository**
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/MR-Crisp/Ai_safety_rail_guards.git
@@ -30,11 +30,11 @@ cd Ai_safety_rail_guards
 
 ---
 
-### **2. Install Docker & Docker Compose**
+### 2. Install Docker and Docker Compose
 
-#### **macOS**
+#### macOS
 
-* **CLI-only setup**
+**CLI-only setup:**
 
 ```bash
 brew install docker
@@ -45,20 +45,21 @@ colima start
 
 > Colima must be running for Docker CLI commands to work.
 
-* **Or Docker Desktop** (includes Engine & Compose):
-  [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
+**Or Docker Desktop** (includes Docker Engine and Compose):
+[https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
 
 ---
 
-#### **Windows**
+#### Windows
 
-* Install **Docker Desktop for Windows**:
-  [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
+Install **Docker Desktop for Windows**:
+[https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
+
 * Ensure **WSL2 backend** is enabled.
 
 ---
 
-#### **Ubuntu/Debian**
+#### Ubuntu/Debian
 
 ```bash
 sudo apt update
@@ -70,7 +71,7 @@ newgrp docker
 
 ---
 
-#### **Fedora/CentOS**
+#### Fedora/CentOS
 
 ```bash
 sudo dnf install docker docker-compose -y
@@ -81,7 +82,7 @@ newgrp docker
 
 ---
 
-#### **Arch Linux / Manjaro**
+#### Arch Linux / Manjaro
 
 ```bash
 sudo pacman -Syu docker docker-compose
@@ -92,7 +93,7 @@ newgrp docker
 
 ---
 
-### **3. Verify Docker & Compose**
+### 3. Verify Docker & Compose
 
 ```bash
 docker --version
@@ -101,7 +102,7 @@ docker compose version
 
 ---
 
-## 🧱 Running the Project with Docker Compose
+## Running the Project with Docker Compose
 
 * **Start all services**
 
@@ -136,21 +137,21 @@ Once running, access:
 
 ---
 
-## 🧠 Project Structure
+## Project Structure
 
-### **Backend**
+### Backend
 
 * Applies AI safety rules to incoming prompts and outputs
 * Handles input validation and output checks
 
-### **Frontend**
+### Frontend
 
 * Provides a UI for testing and visualising guardrails
 * Displays flagged and safe AI responses
 
 ---
 
-## 📄 Docker Compose Configuration
+## Docker Compose Configuration
 
 Example `docker-compose.yml`:
 
@@ -171,7 +172,7 @@ services:
 
 ---
 
-## 🔧 Development Tips
+## Development Tips
 
 * Rebuild after changes:
 
@@ -190,3 +191,4 @@ docker compose down
 ```bash
 docker compose logs -f
 ```
+
