@@ -6,7 +6,7 @@ It includes:
 
 * **Backend API**: Applies AI safety rules
 * **Frontend UI**: Test and visualise guardrail behaviour
-* **Docker Compose setup**: Easily build and run the system across platforms
+* **Docker Compose setup**: Build and run the system across platforms
 
 ---
 
@@ -34,61 +34,65 @@ cd Ai_safety_rail_guards
 
 #### **macOS**
 
-* **Docker CLI and Compose**
+* **CLI-only setup**
 
 ```bash
 brew install docker
 brew install docker-compose
-```
-
-* **Colima (Docker backend for CLI-only setup)**
-
-```bash
 brew install colima
 colima start
 ```
 
 > Colima must be running for Docker CLI commands to work.
 
-* **Alternatively**, you can install **Docker Desktop for Mac** which includes Docker Engine and Compose.
+* **Or Docker Desktop** (includes Engine & Compose):
+  [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
 
 ---
 
 #### **Windows**
 
-* **Install Docker Desktop for Windows**:
+* Install **Docker Desktop for Windows**:
   [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
-
-  * Docker Desktop includes Docker Engine and Docker Compose.
-  * Make sure to enable **WSL2 backend** for Windows Subsystem for Linux.
+* Ensure **WSL2 backend** is enabled.
 
 ---
 
-#### **Linux**
-
-* **Ubuntu/Debian**
+#### **Ubuntu/Debian**
 
 ```bash
 sudo apt update
 sudo apt install docker.io docker-compose -y
 sudo systemctl enable --now docker
+sudo usermod -aG docker $USER  # optional for non-root usage
+newgrp docker
 ```
 
-* **Fedora/CentOS**
+---
+
+#### **Fedora/CentOS**
 
 ```bash
 sudo dnf install docker docker-compose -y
 sudo systemctl enable --now docker
-```
-
-* **Add your user to Docker group (optional for non-root usage)**
-
-```bash
-sudo usermod -aG docker $USER
+sudo usermod -aG docker $USER  # optional for non-root usage
 newgrp docker
 ```
 
-* Verify installation:
+---
+
+#### **Arch Linux / Manjaro**
+
+```bash
+sudo pacman -Syu docker docker-compose
+sudo systemctl enable --now docker
+sudo usermod -aG docker $USER  # optional for non-root usage
+newgrp docker
+```
+
+---
+
+### **3. Verify Docker & Compose**
 
 ```bash
 docker --version
@@ -97,7 +101,7 @@ docker compose version
 
 ---
 
-### **3. Run the Project with Docker Compose**
+## 🧱 Running the Project with Docker Compose
 
 * **Start all services**
 
@@ -105,7 +109,7 @@ docker compose version
 docker compose up --build
 ```
 
-* **Run in detached mode**
+* **Detached mode**
 
 ```bash
 docker compose up -d
@@ -123,7 +127,7 @@ docker compose down
 docker compose logs -f
 ```
 
-Once started, access:
+Once running, access:
 
 * **Frontend UI**: `http://localhost:3000`
 * **Backend API**: `http://localhost:8000`
@@ -132,17 +136,17 @@ Once started, access:
 
 ---
 
-## 🧱 Project Structure
+## 🧠 Project Structure
 
 ### **Backend**
 
-* Handles AI safety rules and logic
-* Validates prompts and model outputs
+* Applies AI safety rules to incoming prompts and outputs
+* Handles input validation and output checks
 
 ### **Frontend**
 
-* Provides an interface for testing
-* Displays flagged or safe AI responses
+* Provides a UI for testing and visualising guardrails
+* Displays flagged and safe AI responses
 
 ---
 
@@ -181,9 +185,8 @@ docker compose up --build
 docker compose down
 ```
 
-* Check logs:
+* Follow logs:
 
 ```bash
 docker compose logs -f
 ```
-
