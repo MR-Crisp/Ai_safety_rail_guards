@@ -66,3 +66,7 @@ button:hover {
   color: #1c2b39;
   border-color: #ff8200;
 }
+.input-section {
+  margin: 20px auto;
+  width: 70%;
+}
