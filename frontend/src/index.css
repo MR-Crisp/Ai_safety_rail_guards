@@ -1,68 +1,157 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* London Spitfire: Light blue and orange on light background */
+    --background: 210 20% 96%;
+    --foreground: 210 40% 10%;
+
+    --card: 210 25% 98%;
+    --card-foreground: 210 40% 10%;
+
+    --popover: 210 20% 94%;
+    --popover-foreground: 210 40% 10%;
+
+    /* Primary: Spitfire Blue */
+    --primary: 195 80% 55%;
+    --primary-foreground: 210 40% 10%;
+
+    /* Secondary: Spitfire Orange */
+    --secondary: 27 100% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 15% 85%;
+    --muted-foreground: 210 20% 40%;
+
+    --accent: 27 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Success color for passing checks */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 85% 97%;
+
+    --border: 210 20% 80%;
+    --input: 210 20% 80%;
+    --ring: 195 80% 55%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 210 25% 98%;
+    --sidebar-foreground: 210 40% 10%;
+    --sidebar-primary: 195 80% 55%;
+    --sidebar-primary-foreground: 210 40% 10%;
+    --sidebar-accent: 27 100% 50%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 210 20% 80%;
+    --sidebar-ring: 195 80% 55%;
+
+    --chart-1: 195 80% 55%;
+    --chart-2: 27 100% 50%;
+    --chart-3: 195 70% 65%;
+    --chart-4: 27 90% 60%;
+    --chart-5: 210 20% 40%;
+
+    --sidebar: 210 25% 98%;
+
+    --font-sans: 'Source Sans Pro', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+    --font-serif: 'Source Serif Pro', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+    --font-mono: 'Source Code Pro', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
+    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+
+    --tracking-normal: 0em;
+    --spacing: 0.25rem;
   }
-  a:hover {
-    color: #747bff;
+
+  .dark {
+    /* London Spitfire: Dark theme */
+    --background: 210 40% 8%;
+    --foreground: 210 20% 95%;
+
+    --card: 210 35% 12%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 210 30% 15%;
+    --popover-foreground: 210 20% 95%;
+
+    /* Primary: Spitfire Blue */
+    --primary: 195 85% 50%;
+    --primary-foreground: 210 40% 10%;
+
+    /* Secondary: Spitfire Orange */
+    --secondary: 27 100% 55%;
+    --secondary-foreground: 210 40% 10%;
+
+    --muted: 210 25% 25%;
+    --muted-foreground: 210 15% 70%;
+
+    --accent: 27 100% 55%;
+    --accent-foreground: 210 40% 10%;
+
+    /* Success color for passing checks */
+    --success: 142 76% 42%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 85% 97%;
+
+    --border: 210 25% 25%;
+    --input: 210 25% 25%;
+    --ring: 195 85% 50%;
+
+    --sidebar-background: 210 35% 12%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 195 85% 50%;
+    --sidebar-primary-foreground: 210 40% 10%;
+    --sidebar-accent: 27 100% 55%;
+    --sidebar-accent-foreground: 210 40% 10%;
+    --sidebar-border: 210 25% 25%;
+    --sidebar-ring: 195 85% 50%;
+
+    --chart-1: 195 85% 50%;
+    --chart-2: 27 100% 55%;
+    --chart-3: 195 75% 60%;
+    --chart-4: 27 90% 65%;
+    --chart-5: 210 25% 40%;
+
+    --sidebar: 210 35% 12%;
+
+    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.15);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.15);
+    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.2), 0 1px 2px -1px hsl(0 0% 0% / 0.2);
+    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.2), 0 1px 2px -1px hsl(0 0% 0% / 0.2);
+    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.2), 0 2px 4px -1px hsl(0 0% 0% / 0.2);
+    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.2), 0 4px 6px -1px hsl(0 0% 0% / 0.2);
+    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.2), 0 8px 10px -1px hsl(0 0% 0% / 0.2);
+    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.35);
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
   }
 }
