@@ -20,3 +20,5 @@ frontend/.vscode/*
 frontend/.idea
 
 venv/
+.venv/
+.idea/
