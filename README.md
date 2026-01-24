@@ -50,7 +50,7 @@ source venv/bin/activate
 venv\Scripts\activate
 
 # Install Python dependencies
-pip install -r requirements.txt
+pip install -r backend/requirements.txt
 ```
 
 > This ensures all Python dependencies are isolated and avoids conflicts with global packages.
