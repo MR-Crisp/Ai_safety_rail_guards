@@ -1,6 +1,6 @@
 # AI Safety Rail Guards
 
-This project implements AI safety guardrails — systems that monitor, validate, and constrain AI behaviour. It intercepts prompts and model outputs, flagging or blocking unsafe or policy-violating content before reaching the user.
+This project was my submission for the 2026 imperial Tech for good Hackathon, ethical AI track. It implements AI safety guardrails — systems that monitor, validate, and constrain AI behaviour. It intercepts prompts and model outputs, flagging or blocking unsafe or policy-violating content before reaching the user.
 
 It includes:
 
